@@ -3,6 +3,7 @@ const {process} = require("grunt/lib/grunt/config");
 let branch = process.env.branch
 let email = process.env.email
 let token = process.env.token
+console.log(branch,email,token)
 
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-screeps')
