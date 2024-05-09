@@ -1,29 +1,30 @@
-const {process} = require("grunt/lib/grunt/config");
-
-let branch = process.env.branch
-let email = process.env.email
-let token = process.env.token
-console.log(branch,email,token)
-
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-screeps')
     grunt.loadNpmTasks('grunt-contrib-clean')
     grunt.loadNpmTasks('grunt-contrib-copy')
     grunt.loadNpmTasks('grunt-file-append')
+    grunt.loadNpmTasks('grunt-env')
 
     let currentdate = new Date();
+
 
     // Output the current date and branch.
     grunt.log.subhead('Task Start: ' + currentdate.toLocaleString())
 
-    grunt.log.writeln('Branch: ' + branch)
 
     grunt.initConfig({
+        env: {
+            misaki: {
+                TOKEN: '',
+                BRANCH: '',
+                EMAIL: '',
+            }
+        },
         screeps: {
             options: {
-                email: email,
-                token: token,
-                branch: branch,
+                email: '<%= EMAIL %>',
+                token: '<%= TOKEN %>',
+                branch: '<%= BRANCH %>',
             },
             dist: {
                 src: ['dist/*.js']
@@ -83,5 +84,12 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('default', ['clean', 'copy:screeps', 'file_append:versioning', 'screeps', 'clean']);
+    grunt.registerTask('set-env', function () {
+        grunt.config('BRANCH', process.env.branch);
+        grunt.config('EMAIL', process.env.email);
+        grunt.config('TOKEN', process.env.token);
+    })
+
+
+    grunt.registerTask('default', ['clean', 'env:misaki', 'set-env', 'copy:screeps', 'file_append:versioning', 'screeps', 'clean']);
 }
