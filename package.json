@@ -1,0 +1,9 @@
+{
+  "name": "screeps-game",
+  "version": "1.0.0",
+  "description": "screeps games script code , write use typescript",
+  "main": "main.js",
+  "repository": "https://github.com/Misaki030112/screeps-game.git",
+  "author": "misaki",
+  "license": "MIT"
+}
