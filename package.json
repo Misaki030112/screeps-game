@@ -1,9 +1,50 @@
 {
   "name": "screeps-game",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "keywords": [
+    "screeps",
+    "ai",
+    "game"
+  ],
+  "bugs": {
+    "email": "***REMOVED***",
+    "url": "https://github.com/Misaki030112/screeps-game/issues"
+  },
   "description": "screeps games script code , write use typescript",
-  "main": "main.js",
-  "repository": "https://github.com/Misaki030112/screeps-game.git",
+  "main": "src/main.js",
+  "files": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Misaki030112/screeps-game.git"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run type-check && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir build --extensions \".ts,.tsx\" --source-maps inline",
+    "push": "grunt"
+  },
   "author": "misaki",
-  "license": "Apache License"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "grunt": "^1.6.1",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-file-append": "^0.0.7",
+    "grunt-screeps": "^1.5.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-typescript": "^7.24.1",
+    "@types/screeps": "^3.3.8"
+  }
 }
