@@ -1,0 +1,30 @@
+name: 'Deploy to Screeps Game Server'
+on:
+  push:
+    branches:
+      - '**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: install yarn
+        run: npm  install -g yarn
+      - name: install project depenencies
+        run: yarn
+      - name: build project
+        run: yarn build
+      - name: deploy to screeps server
+        run: |
+          export branch=${GITHUB_REF#refs/heads/}
+          export email=${{ secrets.EMAIL }}
+          export token=${{ secrets.TOKEN }}
+          yarn push
+          
