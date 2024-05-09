@@ -1,4 +1,9 @@
 const {process} = require("grunt/lib/grunt/config");
+
+let branch = process.env.branch
+let email = process.env.email
+let token = process.env.token
+
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-screeps')
     grunt.loadNpmTasks('grunt-contrib-clean')
@@ -6,9 +11,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-file-append')
 
     let currentdate = new Date();
-    let branch = process.env.branch || "master"
-    let email = process.env.email || ""
-    let token = process.env.token || ""
 
     // Output the current date and branch.
     grunt.log.subhead('Task Start: ' + currentdate.toLocaleString())
@@ -80,5 +82,5 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('default', ['clean', 'copy:screeps', 'file_append:versioning', 'screeps']);
+    grunt.registerTask('default', ['clean', 'copy:screeps', 'file_append:versioning', 'screeps', 'clean']);
 }
