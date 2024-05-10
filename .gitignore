@@ -135,3 +135,6 @@ dist
 /.idea/modules.xml
 /.idea/screeps-game.iml
 /.idea/vcs.xml
+
+others
+others/**

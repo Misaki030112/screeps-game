@@ -1,4 +1,4 @@
-import {HARVESTER} from "./constant/role";
+import {HARVESTER} from "./constant/role.name";
 
 
 export const loop = () => {

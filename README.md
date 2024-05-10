@@ -18,6 +18,6 @@ This allows people who play the game to focus more on writing better screeps scr
 > 
 > TOKEN = xxxxxx
 
-![img.png](src/constant/markdown.png)
+![img.png](markdown.png)
 #### 3. After the configuration is completed, all changes you make in this code will be pushed to your screeps account. Please note that it will not automatically create a new game.You still need to manually start an initial Spawn to start a new game. game.
 *You also need to note that this code supports pushing multiple branches to the screeps server. When you switch to a new branch to push code, it will automatically trigger the github action process and synchronize your branch code changes to the screeps server. At the same time, please note that it will not automatically create a branch for you, so before the new branch is pushed, please make sure that this branch already exists in your screeps account.*
