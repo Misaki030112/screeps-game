@@ -1,9 +1,28 @@
-// creeps
+// creeps func
 
-export const SetKVInMemory = (creep: Creep, k: string, v: string) => {
-    (creep.memory as { [key: string]: any })[k] = v
+
+import _ from "lodash";
+
+export const SaveCreepPropertiesInMemory = (creepMemory: CreepMemory, p: Partial<CreepProperty>) => {
+    _.assign(creepMemory, p);
 }
 
-export const GetKVInMemory = (creep: Creep, k: string): string | undefined => {
-    return (creep.memory as { [key: string]: any })[k] as string | undefined;
+export const GetCreepPropertiesInMemory = (creepMemory: CreepMemory): Partial<CreepProperty> => {
+    return _.pickBy(creepMemory, (_, k) => {
+        return __defaultCreepProperty.hasOwnProperty(k)
+    })
+}
+
+
+interface CreepProperty {
+    role: string
+    working: boolean
+    path: PathStep[]
+}
+
+
+const __defaultCreepProperty: CreepProperty = {
+    role: '',
+    working: false,
+    path: []
 }

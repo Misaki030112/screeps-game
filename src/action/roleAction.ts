@@ -3,9 +3,6 @@ export interface RoleAction {
 }
 
 
-/**
- * 1.
- */
 class HarvestRoleAction implements RoleAction {
 
     public process(creep: Creep) {
