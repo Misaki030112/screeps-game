@@ -16,7 +16,8 @@
     "declaration": true,
     // Ensure that Babel can safely transpile files in the TypeScript project
     "isolatedModules": true,
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "resolveJsonModule": true
   },
   "include": [
     "src"
